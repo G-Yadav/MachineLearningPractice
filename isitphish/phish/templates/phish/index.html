@@ -6,12 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
+    <style>
+        .success {
+            border: 2px solid green;
+            color: rgb(70, 185, 189);
+            border-radius: 5px;
+        }
+        .error {
+            border: 2px solid red;
+            color: rgb(70, 185, 189);
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     {% load static %}
     <div class="jumbotron mb-0" style="min-height: 100vh; display: flex; align-items: center;">
         <div class="container">
             <div class="row">
+
+                {% if messages %}
+                <div class="col-12 mb-5">
+                    <div class="d-flex justify-content-center">
+                    {% for message in messages %}
+                        <p class="{{message.tags}} p-3" >{{ message }}</p>
+                    {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
                 <div class="col-12 mb-4">
                     <div class="d-flex justify-content-center">
                         <img src="{% static 'phish/Logo.png' %}" alt="Logo" width="250" height="110"> 
